@@ -19,15 +19,7 @@ using namespace std;
 int main(){
 int t=0;
 cin>>t;
-while(t--){ 
-    int n;
-    cin>>n;
-    vector<int>vec(n);
-    for(int i=0;i<n;i++){
-        cin>>vec[i];
-    } 
-    int maxi=*max_element(vec.begin(),vec.end()-1);
-    cout<<maxi+vec[n-1]<<endl;
+while(t--){  
 }
 return 0;
 }

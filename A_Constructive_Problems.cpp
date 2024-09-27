@@ -20,14 +20,11 @@ int main(){
 int t=0;
 cin>>t;
 while(t--){ 
-    int n;
-    cin>>n;
-    vector<int>vec(n);
-    for(int i=0;i<n;i++){
-        cin>>vec[i];
-    } 
-    int maxi=*max_element(vec.begin(),vec.end()-1);
-    cout<<maxi+vec[n-1]<<endl;
+    int n,m;
+    cin>>n>>m;
+    int maxi=max(n,m);
+    cout<<maxi<<endl;
+
 }
 return 0;
 }

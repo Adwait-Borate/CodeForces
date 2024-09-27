@@ -20,14 +20,24 @@ int main(){
 int t=0;
 cin>>t;
 while(t--){ 
-    int n;
-    cin>>n;
-    vector<int>vec(n);
-    for(int i=0;i<n;i++){
-        cin>>vec[i];
-    } 
-    int maxi=*max_element(vec.begin(),vec.end()-1);
-    cout<<maxi+vec[n-1]<<endl;
+    int dx[4] = {-1, 1, -1, 1}, dy[4] = {-1, -1, 1, 1};
+    int a,b,xk,yk,xq,yq;
+    cin>>a>>b>>xk>>yk>>xq>>yq;
+    set<pair<int ,int>>kset,qset;
+    for(int j = 0; j < 4; j++){
+            kset.insert({xk+dx[j]*a, yk+dy[j]*b});
+            qset.insert({xq+dx[j]*a, yq+dy[j]*b});
+            kset.insert({xk+dx[j]*b, yk+dy[j]*a});
+            qset.insert({xq+dx[j]*b, yq+dy[j]*a});
+        }
+        int cnt=0;
+        for(auto& i:kset){
+              if(qset.find(i) != qset.end())
+                cnt++;
+        }
+
+        cout<<cnt<<endl;
+
 }
 return 0;
 }
