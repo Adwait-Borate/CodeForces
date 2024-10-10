@@ -35,6 +35,7 @@ while(t--){
             sign=0;
         }
     } 
+    //ok done
     cout<<sum<<endl;
 
 }

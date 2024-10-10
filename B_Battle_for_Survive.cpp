@@ -31,7 +31,7 @@ int main()
             cin >> vec[i];
             sum += vec[i];
         }
-
+//ok
         cout << sum - 2 * vec[n - 2] << '\n';
     }
     return 0;

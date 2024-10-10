@@ -67,6 +67,7 @@ int main()
                 cout << "1" << " ";
             }
         }
+        //ok
         cout << "\n";
     }
     return 0;

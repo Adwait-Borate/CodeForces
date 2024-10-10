@@ -1,63 +1,43 @@
-//****ADWAIT PRASHANT BORATE****
-#include<bits/stdc++.h>
-#define ll long long
-#define uint unsigned long long
-#define vi vector<int>
-#define vvi vector<vi >
-#define vb vector<bool>
-#define vvb vector<vb >
-#define fr(i,n) for(int i=0; i<(n); i++)
-#define rep(i,a,n) for(int i=(a); i<=(n); i++)
-#define all(v) v.begin(),v.end()
-#define sz(v) (int)(v.size())
-#define srt(v)  sort(v.begin(),v.end())         // sort 
-#define mxe(v)  *max_element(v.begin(),v.end())     // find max element in vector
-#define mne(v)  *min_element(v.begin(),v.end())     // find min element in vector
-#define unq(v)  v.resize(distance(v.begin(), unique(v.begin(), v.end())));
-#define nl cout<<"\n"
+#include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
+
+int maxScore(const vector<int>& a, int n) {
+    // dp[i] stores the maximum score achievable by considering the first i elements
+    vector<int> dp(n + 1, 0);  // Initialize dp array with 0s
+    
+    // Base case
+    dp[0] = 0;  // No elements, score is 0
+    dp[1] = a[0] + 1;  // Only one element, color it red
+    
+    // Iterate through the array from 2 to n
+    for (int i = 2; i <= n; ++i) {
+        // Option 1: Do not color this element red
+        dp[i] = dp[i - 1];
+        
+        // Option 2: Color this element red, and add its value +1 to the score
+        dp[i] = max(dp[i], dp[i - 2] + a[i - 1] + 1);
+    }
+    
+    // The final result is stored in dp[n]
+    return dp[n];
+}
+
 int main() {
-    int t; 
+    int t;
     cin >> t;
-
+    
     while (t--) {
-        int n; 
+        int n;
         cin >> n;
-
         vector<int> a(n);
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; ++i) {
             cin >> a[i];
         }
 
-        int maxElement = *max_element(a.begin(), a.end());
-
-        vector<int> maxIndices;
-        for (int i = 0; i < n; i++) {
-            if (a[i] == maxElement) {
-                maxIndices.push_back(i);
-            }
-        }
-
-
-        int totalCount = 0;
-
- 
-        for (int index : maxIndices) {
-            int count = 1; 
-            
-
-            for (int i = index - 2; i >= 0; i -= 2) {
-                count++;
-            }
-
-            for (int i = index + 2; i < n; i += 2) {
-                count++;
-            }
-
-            totalCount = max(totalCount, count);
-        }
-
-        cout << maxElement + totalCount << endl;
+        // Solve for each test case
+        cout << maxScore(a, n) << endl;
     }
 
     return 0;
