@@ -19,6 +19,7 @@ using namespace std;
 int main(){
 int t=0;
 cin>>t;
+//
 while(t--){ 
     int l,r;
     cin>>l>>r;
